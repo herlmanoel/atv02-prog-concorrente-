@@ -3,7 +3,15 @@ import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+/**
+ * The type Main.
+ */
 public class Main {
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
     public static void main(String[] args) {
         int NUMBER_OF_INTERACTIONS = 5000;
         int availableProcessors = Runtime.getRuntime().availableProcessors();
