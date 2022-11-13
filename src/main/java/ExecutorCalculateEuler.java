@@ -45,7 +45,6 @@ public class ExecutorCalculateEuler {
         executorService.shutdown();
 
         waitExecutorService();
-
         return numberForSum
                 .stream()
                 .reduce(BigDecimal.ZERO, BigDecimal::add);

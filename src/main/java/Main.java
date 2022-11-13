@@ -14,27 +14,21 @@ public class Main {
      * @param args the input arguments
      */
     public static void main(String[] args) {
-        int availableProcessors = Runtime.getRuntime().availableProcessors();
         Scanner in = new Scanner(System.in);
 
         System.out.print("Digite o número de iterações: ");
         int numberOfIterations = in.nextInt();
-
-        while (numberOfIterations <= 0) {
-            System.out.println("O número digitado é menor ou igual a 0.");
-            System.out.print("Por favor, digite novamente o número de iterações: ");
-            numberOfIterations = in.nextInt();
-        }
+        System.out.print("Digite o número de Threads para a versão newFixedThreadPool: ");
+        int numberOfThreadsForFixed = in.nextInt();
 
         Map<String, ExecutorService> listExecutorService = new HashMap<>();
-        listExecutorService.put("newFixedThreadPool", Executors.newFixedThreadPool(availableProcessors));
+        listExecutorService.put("newFixedThreadPool", Executors.newFixedThreadPool(numberOfThreadsForFixed));
         listExecutorService.put("newCachedThreadPool", Executors.newCachedThreadPool());
         listExecutorService.put("newWorkStealingPool", Executors.newWorkStealingPool());
 
-        int finalNumberOfIterations = numberOfIterations;
         listExecutorService.forEach((key, itemExecutorService) -> {
             long TEMPO_INICIAL = System.currentTimeMillis();
-            ExecutorCalculateEuler calculateEulerFixed = new ExecutorCalculateEuler(finalNumberOfIterations, itemExecutorService);
+            ExecutorCalculateEuler calculateEulerFixed = new ExecutorCalculateEuler(numberOfIterations, itemExecutorService);
             System.out.println(calculateEulerFixed.getNumberEuler());
             long TEMPO_FINAL = System.currentTimeMillis();
 
