@@ -1,5 +1,4 @@
 import java.math.BigDecimal;
-import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -12,7 +11,7 @@ public class ExecutorCalculateEuler {
     /**
      * The Number of interactions.
      */
-    private final Integer numberOfInteractions;
+    private final Integer numberOfIterations;
     /**
      * The Number for sum.
      */
@@ -25,11 +24,11 @@ public class ExecutorCalculateEuler {
     /**
      * Instantiates a new Executor calculate euler.
      *
-     * @param numberOfInteractions the number of interactions
+     * @param numberOfIterations the number of interactions
      * @param executorService      the executor service
      */
-    public ExecutorCalculateEuler(Integer numberOfInteractions, ExecutorService executorService) {
-        this.numberOfInteractions = numberOfInteractions;
+    public ExecutorCalculateEuler(Integer numberOfIterations, ExecutorService executorService) {
+        this.numberOfIterations = numberOfIterations;
         this.executorService = executorService;
     }
 
@@ -39,7 +38,7 @@ public class ExecutorCalculateEuler {
      * @return the number euler
      */
     BigDecimal getNumberEuler () {
-        for (int i = 1; i < numberOfInteractions; i++) {
+        for (int i = 1; i < numberOfIterations; i++) {
             executorService.execute(new CalculateEuler(i, numberForSum));
         }
 
