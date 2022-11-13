@@ -7,7 +7,6 @@ public class CalculateEuler extends Thread {
     private final List<BigDecimal> numberForSum;
 
     public CalculateEuler(Integer index, List<BigDecimal> numberForSum) {
-        System.out.println("Iniciando "+ index);
         this.numberForSum = numberForSum;
         this.index = new BigDecimal(index);
     }

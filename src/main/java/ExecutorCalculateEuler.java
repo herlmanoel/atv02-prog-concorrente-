@@ -1,4 +1,5 @@
 import java.math.BigDecimal;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -15,7 +16,6 @@ public class ExecutorCalculateEuler {
     }
 
     BigDecimal getNumberEuler () {
-        System.out.println(Runtime.getRuntime().availableProcessors());
         for (int i = 1; i < numberOfInteractions; i++) {
             executorService.execute(new CalculateEuler(i, numberForSum));
         }
